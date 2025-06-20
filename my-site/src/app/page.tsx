@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import { useState, useRef, useEffect } from "react";
 import { ShieldCheck } from "lucide-react";
 import { MessageCircleMore } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -97,11 +98,14 @@ export default function Home() {
               className="relative md:w-1/2"
               style={imageStyle}
             >
-              <img 
-                src="/hero.jpg"
-                alt="SmaTech Group"
-                className="w-full max-w-lg mx-auto rounded-lg shadow-xl"
-              />
+  <Image
+  src="/hero.jpg"
+  alt="SmaTech Group"
+  width={800} // Recommended: fixed width for performance
+  height={600} // Adjust to maintain your aspect ratio
+  className="w-full max-w-lg mx-auto rounded-lg shadow-xl"
+  priority // Optional: for faster loading above the fold
+/>
             </div>
           </div>
         </div>   
@@ -110,11 +114,14 @@ export default function Home() {
 <div className="flex flex-col items-center justify-between gap-2 px-5 py-10 text-sm bg-white md:pb-5 md:flex-row md:px-64 md:pt-2 lg:text-sm">
   {/* Column 1 - Image */}
   <div className="flex justify-center md:w-1/3">
-    <img 
-      src="/faces_get_in_touch.svg"
-      alt="faces"
-      className="w-40 h-auto"
-    />
+<Image
+  src="/faces_get_in_touch.svg"
+  alt="faces"
+  width={160} // Equivalent to Tailwind's w-40 (40 * 4 = 160px)
+  height={0}  // Optional: will be calculated automatically for SVGs
+  className="h-auto"
+  priority // Optional: use if this image is above the fold
+/>
   </div>
   
   {/* Column 2 - Heading + Paragraph */}
@@ -172,11 +179,13 @@ export default function Home() {
 <section className="flex flex-col px-5 pt-16 bg-green-50 md:px-24 lg:px-24 md:flex-row ">
   
   <div className="w-full md:w-1/2">
-    <img 
-      src="/consulting_lady.png"
-      alt="consulting lady"
-      className="w-full h-auto"
-    />
+ <Image 
+  src="/consulting_lady.png"
+  alt="Consulting Lady"
+  width={500} // Required
+  height={400} // Required
+  className="w-full h-auto rounded-xl"
+/>
   </div>
   <div className="flex flex-col justify-center w-full space-y-5 text-black lg:space-y-4 xl:space-y-10 md:w-1/2">
     <h2 className="text-[#8DC440] text-sm lg:text-2xl font-bold xl:text-4xl">Arrange a</h2>

@@ -1,5 +1,7 @@
 "use client";
+
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -24,20 +26,23 @@ export default function Navbar() {
     e.preventDefault();
     if (query.trim()) {
       router.push(`/search?q=${encodeURIComponent(query.trim())}`);
-      setMobileMenuOpen(false); // Optionally close mobile menu on search
+      setMobileMenuOpen(false); // Close mobile menu after search
     }
   };
 
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-white shadow-md z-50 relative">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2 flex-shrink-0">
-          <Link href="/">
-            <img
+          <Link href="/" className="block">
+            <Image
               src="/smatech_logo.svg"
               alt="Smatech Logo"
-              className="w-40 h-10 object-contain"
+              width={160}
+              height={40}
+              className="object-contain"
+              priority
             />
           </Link>
         </div>
